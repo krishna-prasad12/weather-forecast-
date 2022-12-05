@@ -14,6 +14,7 @@ try:
         new_data = get_data(city,days)
         if option=='Temperature':
             temperature = [new_d['main']['temp'] for new_d in new_data]
+            temperature=[(temp-273.15) for temp in temperature]
             date=[new_d['dt_txt'] for new_d in new_data]
             figure=px.line(x=date,y=temperature,labels={'x':'date','y':'temperature'})
             kp.plotly_chart(figure)
